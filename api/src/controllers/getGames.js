@@ -2,9 +2,9 @@ require('dotenv').config();
 const {API_KEY} = process.env
 const axios = require("axios");
 const URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
-const { Videogame, Genres } = require('../db.js');
+const { Videogame, Genres } = require('../db');
 const { Op } = require('sequelize');
-const {mapDataResults, destrucData, mapDataDb} = require ('./ordesFunctions.js'); // importo los ordenamientos personalizados
+const {mapDataResults, destrucData, mapDataDb} = require ('./ordersFunctions.js'); // importo los ordenamientos personalizados
 
 //¡¡ obtenemos los juegos de la API
 

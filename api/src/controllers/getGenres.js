@@ -2,9 +2,9 @@ require('dotenv').config();
 const { API_KEY } = process.env;
 const axios = require('axios');
 const URL = `https://api.rawg.io/api/genres?key=${API_KEY}`;
-const { GetGenres } = require('../db');
+const { Genres } = require('../db');
 
-const GetGenres = async () => {
+const getGenres = async (req, res) => {
     try {
         let genres = await Genres.findAll({attributes: ['id', 'name']}); //se incluye los atributos que quiero ver
         
@@ -22,4 +22,4 @@ const GetGenres = async () => {
     }
 }
 
-module.exports = GetGenres;
+module.exports = getGenres;

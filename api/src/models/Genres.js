@@ -19,3 +19,5 @@ const Genres = (Sequelize) => {
         timestamps: false,
     })
 }
+
+module.exports = Genres
