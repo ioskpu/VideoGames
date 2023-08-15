@@ -1,27 +1,29 @@
-import style from './App.module.css'
-import { Route, Routes, useLocation} from 'react-router-dom';
-import Landing from './components/landing/landing';
-import Cuadriculas from './components/cuadriculas/cuadriculas';
-import Detail from './components/Detail/Detail';
-import FormCreater from './components/FormCreater/FormCreater';
-import Header from './components/Header/Header';
+import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import LandingPage from "./components/landingpage/LandingPage"
+import Home from "./components/home/Home";
+import GameCreate from './components/gamecreate/GameCreate';
+import GameDetail from './components/gamedetail/GameDetail';
+import { NotFound } from './components/notFound/NotFound';
+import { About } from './components/about/About';
 
 
 function App() {
-
-  const location = useLocation();
-
   return (
-    <div className={style.App}>
-    {location.pathname !== '/' ? <Header/> : null}
-
-    <Routes>
-      <Route path='/' element={<Landing/>}/>
-      <Route path='/home' element={<Cuadriculas/>}/>
-      <Route path='/detail/:id' element={<Detail/>}/>
-      <Route path='/create' element={<FormCreater/>}/>
-    </Routes>
+    <BrowserRouter>
+    <div className="App">
+      <Switch>
+        
+        <Route exact path="/" component={LandingPage}/>
+        <Route exact path="/home" component={Home}/>
+        <Route exact path="/creategame" component={GameCreate}/>
+        <Route exact path="/videogames/:id" component={GameDetail}/>
+        <Route exact path="/detail" component={About}/>
+        <Route path="/*" component={NotFound}/>
+      </Switch>
     </div>
+    </BrowserRouter>
   );
 }
 
