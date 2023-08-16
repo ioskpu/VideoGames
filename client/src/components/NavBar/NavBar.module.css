@@ -1,4 +1,5 @@
 .titleHome {
+  font-family: Daydream;
   height: max-content;
   display: flex;
   justify-content: center;
@@ -23,20 +24,25 @@
 }
 
 .titleHome h1 {
-  font-family: monospace;
+  font-family: 'Daydream';
   font-style: italic;
-  text-shadow: 5px 5px 5px rgb(167, 87, 87);
+  text-shadow: 5px 5px 5px rgb(167, 79, 189);
   color: #fff;
-  font-size: 35px;
+  font-size: 25px;
   margin: 0;
   margin-bottom: 10px;
+}
+
+@font-face {
+  font-family: 'Daydream';
+  src: url('../../assets/font/Daydream.ttf') format('truetype');
 }
 
 .containerDevInfo {
   display: flex;
   align-items: center;
   position: absolute;
-  right: 20px;
+  left: 20px;
   top: 10px;
   padding: 0 5px;
   gap: 8px;
@@ -89,12 +95,12 @@
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background-color: rgb(136, 18, 18);
+  background-color: rgb(189, 10, 159);
   color: #fff;
 }
 
 .containerButtonCreate button:hover {
   cursor: pointer;
-  background-color: rgb(175, 46, 46);
+  background-color: rgb(236, 44, 227);
   transition: 0.3s;
 }

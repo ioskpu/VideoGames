@@ -53,7 +53,7 @@ export default function Home() {
         <div className={style.loading}>
           <img src={metalSlug} alt="img-loading" />
           <div>
-            <h3>Loading...</h3>
+            <h3>Cargando...</h3>
           </div>
         </div>
       ) : (

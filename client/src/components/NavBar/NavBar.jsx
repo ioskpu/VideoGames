@@ -13,25 +13,25 @@ export default function NavBar({ handleRefresh, handleSetCurrentPage }) {
   return (
     <div>
       <div className={style.titleHome}>
-        <h1>VideoGames</h1>
+        <h1>Game Over</h1>
         <button
           type="button"
           onClick={(e) => handleRefresh(e)}
           className={style.buttonRefresh}
         >
-          Refresh &#8635;
+          Actualizar &#8635;
         </button>
         <div className={style.containerDevInfo}>
           <div className={style.devName}>
-            <h5>by William Garcia</h5>
+            <h5>by Luis Corales</h5>
           </div>
           <div className={style.devGitHub}>
-            <a href="https://github.com/william-gar" target="blank">
+            <a href="https://github.com/ioskpu" target="blank">
               <img src={gitHubIcon} alt="githubIcon" />
             </a>
           </div>
           <div className={style.devLinkedin}>
-            <a href="https://www.linkedin.com/in/williamgar/" target="blank">
+            <a href="https://www.linkedin.com/in/luis-corales-1566b867//" target="blank">
               <img src={linkedinIcon} alt="linkedinIcon" />
             </a>
           </div>
@@ -55,7 +55,12 @@ export default function NavBar({ handleRefresh, handleSetCurrentPage }) {
         </div>
         <div className={style.containerButtonCreate}>
           <Link to="/create-videogame">
-            <button>Create</button>
+            <button>Agregar Videojuego</button>
+          </Link>
+        </div>
+        <div className={style.containerButtonCreate}>
+          <Link to="/">
+            <button>Ir al Landing</button>
           </Link>
         </div>
       </div>

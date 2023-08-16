@@ -32,7 +32,7 @@ export default function Detail(props) {
       ) : name ? (
         <div>
           <Link to="/home">
-            <button className={style.goBackDetail}>&#8592; Go Back</button>
+            <button className={style.goBackDetail}>&#8592; Regresar</button>
           </Link>
           <div className={style.containerDetail}>
             <div className={style.imageDetail}>
@@ -74,7 +74,7 @@ export default function Detail(props) {
       ) : (
         <div className={style.loadingDetail}>
           <img src={marioGif} alt="loading" />
-          <p>Loading...</p>
+          <p>Cargando...</p>
         </div>
       )}
     </div>
