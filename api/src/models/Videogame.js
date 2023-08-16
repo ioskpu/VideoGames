@@ -1,51 +1,52 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  //define sirve para crear un modelo para la tabla
-  sequelize.define('videogame', {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
+  sequelize.define(
+    "videogame",
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
+
+      name: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+      },
+
+      description: {
+        type: DataTypes.STRING(500),
+        allowNull: false,
+      },
+
+      released: {
+        type: DataTypes.STRING(10),
+      },
+
+      rating: {
+        type: DataTypes.FLOAT,
+      },
+
+      platforms: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+      },
+
+      image: {
+        type: DataTypes.STRING,
+      },
+
+      createdInDb: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false,
+      },
     },
-    id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    released: {
-      type: DataTypes.DATEONLY
-    },
-    rating: {
-      type: DataTypes.FLOAT,
-      validate: {
-        min: 1.0,
-        max: 5,
-      }
-    },
-    platforms: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    },
-    background_image: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    createdInDb:{
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
+    {
+      timestamps: false,
     }
-   
-  },
-  {
-    timestamps: false,
-  });
+  );
 };
