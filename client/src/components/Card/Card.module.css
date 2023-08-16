@@ -1,0 +1,72 @@
+.cardContainer {
+  border: 1px solid #444;
+  width: 300px;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 7px;
+  color: #fff;
+  background-color: #222;
+  box-shadow: -7px 7px 8px #111;
+}
+
+.cardContainer:hover {
+  background-color: #111;
+  box-shadow: -5px 5px 5px #000;
+  transition: 0.5s;
+}
+
+.cardName h1 {
+  font-family: monospace;
+  color: #f0f;
+  text-shadow: 0.5px 0.5px #fff;
+  font-size: 22px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+  margin: auto;
+  background-position: center;
+  background-size: cover;
+  background-image: linear-gradient(
+      to left,
+      hsla(341, 64%, 22%, 0.678),
+      hsla(204, 42%, 33%, 0.719)
+    ),
+    url("../../assets/images/background-image-card.png");
+}
+
+.cardImage img {
+  border-radius: 5px;
+  width: 250px;
+  height: 250px;
+}
+
+.cardRating {
+  border: 1px solid #444;
+  border-radius: 5px;
+  width: max-content;
+  margin: 10px auto;
+  padding: 7px;
+  background-color: #333;
+}
+
+.cardRating h3 {
+  font-family: monospace;
+  font-size: 18px;
+  margin: 0;
+}
+
+.cardRating h4 {
+  margin: 0;
+}
+
+.cardGenres {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

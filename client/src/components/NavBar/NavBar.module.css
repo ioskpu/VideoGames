@@ -1,0 +1,100 @@
+.titleHome {
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.buttonRefresh {
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(68, 68, 124);
+  color: #fff;
+  font-size: 16px;
+}
+
+.buttonRefresh:hover {
+  cursor: pointer;
+  background-color: rgb(84, 84, 155);
+  transition: 0.3s;
+}
+
+.titleHome h1 {
+  font-family: monospace;
+  font-style: italic;
+  text-shadow: 5px 5px 5px rgb(167, 87, 87);
+  color: #fff;
+  font-size: 35px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.containerDevInfo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  padding: 0 5px;
+  gap: 8px;
+}
+
+.devName h5 {
+  color: #fff;
+  text-shadow: -1px -1px 5px #000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 15px;
+  margin: 0;
+}
+
+.devGitHub img,
+.devLinkedin img {
+  filter: invert(75%);
+}
+
+.devGitHub img:hover,
+.devLinkedin img:hover {
+  filter: invert(95%);
+  transition: 0.3s;
+}
+
+.containerAllMenu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.containerFilter select {
+  height: 30px;
+  font-size: 17px;
+  background-color: #444;
+  color: #ddd;
+  border: 1px solid #555555;
+  border-radius: 5px;
+}
+
+.containerFilter select:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+
+.containerButtonCreate button {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(136, 18, 18);
+  color: #fff;
+}
+
+.containerButtonCreate button:hover {
+  cursor: pointer;
+  background-color: rgb(175, 46, 46);
+  transition: 0.3s;
+}

@@ -1,36 +1,43 @@
-import {getVideogamesName } from "../../../src/redux/actions/index";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import s from "../SearchBar/searchBar.module.css"
+import { getVideogamesByName, resetVideogames } from "../../actions";
+import style from "./SearchBar.module.css";
 
- export const SearchBar = ({setCurrentPage}) => {
-  
-    const [searchState, setSearchState] = useState("");
-    const dispatch = useDispatch();
+export default function SearchBar({ handleSetCurrentPage }) {
+  const dispatch = useDispatch();
+  const [nameVideogame, setNameVideogame] = useState("");
 
-        const handleInputChange = (event) =>{
-            event.preventDefault();
-            setSearchState(event.target.value);
-            
-           
-        };
-        const handleSubmit = (event) => {
-            event.preventDefault();
-            dispatch(getVideogamesName(searchState))
-            setSearchState("");
-            setCurrentPage(1);
-            
-        }
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    setNameVideogame(e.target.value);
+  };
 
-    return (
-        <div className={s.container}>
-           
-             <input className={s.inputs} value={searchState} type="text" onChange={(event) => handleInputChange(event)}  placeholder="Buscar juego por nombre" />
-            
-             <button className={s.buttons} type="submit" onClick={(event) => handleSubmit(event)} >Buscar</button>
-            
-        </div>
-    )
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-};
+    if (nameVideogame.trim().length) {
+      handleSetCurrentPage();
+      dispatch(resetVideogames());
+      dispatch(getVideogamesByName(nameVideogame.trim()));
+      setNameVideogame("");
+    }
+  };
 
+  return (
+    <div className={style.searchBar}>
+      <form onSubmit={handleSubmit}>
+        <input
+          className={style.search}
+          value={nameVideogame}
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => handleInputChange(e)}
+          required
+        ></input>
+        <button type="submit" className={style.submit}>
+          &#128269;
+        </button>
+      </form>
+    </div>
+  );
+}
