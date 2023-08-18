@@ -41,25 +41,29 @@ export default function CreateVideogame() {
     platforms: [],
   };
 
-  const [input, setInput] = useState({ ...initialInputs });
+  const [input, setInput] = useState({ ...initialInputs }); 
 
+  /* El código anterior está utilizando el hoock UseeFectect en un componente React.Está enviando una acción
+  llamado "GetGenres" para buscar géneros.El hoock UseeFectect se activa cuando el componente se monta y
+  Cada vez que cambia la variable "despachar".*/
   useEffect(() => {
     dispatch(getGenres());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getPlatforms());
-  }, []);
+  }, [dispatch]);
 
   const [inputsErrors, setInputsErrors] = useState({});
 
   const imgNotFound =
-    "https://raw.githubusercontent.com/william-gar/only-images/main/readme-images/cover-image/img-not-found.jpg";
+    "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png";
 
   let errors = {};
 
   const inputsValidator = (form) => {
     let regexName = /^[A-Za-z0-9\s]+$/;
+    // let regexDate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
     let regexDate = /^\d{4}-\d{2}-\d{2}$/;
     // let regexImage = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpe?g|gif|png|webp|bmp)/i;
 
@@ -69,10 +73,10 @@ export default function CreateVideogame() {
       form.name.length > 40 ||
       form.name.length < 4
     )
-      errors.name = "*Name is required (min 4 char & max 40 char)";
+      errors.name = "*Se requiere un nombre (debe contener min 4 car & max 40 car)";
     //!regexImage.test(form.image)
     if (srcImage.src === imgNotFound) {
-      errors.image = "*Image URL is required (enter a valid image url)";
+      errors.image = "*Se requiere URL de imagen (ingrese una URL de imagen válida)";
     }
 
     if (
@@ -80,10 +84,10 @@ export default function CreateVideogame() {
       form.description.trim().length > 250
     )
       errors.description =
-        "*Description is required (min 10 char & max 250 char)";
+        "*Se requiere una descripción (min 10 caracteres & max 250 caracteres)";
 
     if (!regexDate.test(form.released))
-      errors.released = "*Release date is required - format(dd-mm-yyyy)";
+      errors.released = "*Se requiere la fecha de lanzamiento - formato(mm-dd-yyyy)";
 
     if (
       isNaN(form.rating) ||
@@ -91,13 +95,13 @@ export default function CreateVideogame() {
       form.rating > 5 ||
       form.rating.trim() === ""
     )
-      errors.rating = "*Rating is required number(min 0 & max 5)";
+      errors.rating = "*Se requiere calificación (min 0 & max 5)";
 
     if (form.genres.length > 5 || form.genres.length === 0)
-      errors.genres = "*Select Genre (min 1 & max 5)";
+      errors.genres = "*Seleccione Genero (min 1 & max 5)";
 
     if (form.platforms.length > 5 || form.platforms.length === 0)
-      errors.platforms = "*Select Platform (min 1 & max 5)";
+      errors.platforms = "*Seleccione Plataforma (min 1 & max 5)";
 
     return errors;
   };
@@ -185,13 +189,13 @@ export default function CreateVideogame() {
       srcImage.src !== imgNotFound
     ) {
       dispatch(postVideogame(input));
-      alert(`Videogame ${input.name} Created!`);
+      alert(`Videogame ${input.name} Agregado!`);
       setInput({ ...initialInputs });
       history.push("/home");
       dispatch(resetVideogames());
       dispatch(getVideogames());
     } else {
-      alert("Complete All Inputs Correctly!!!");
+      alert("¡Todas las entradas completadas correctamente!");
 
       setInputsErrors(
         inputsValidator({
@@ -204,13 +208,13 @@ export default function CreateVideogame() {
   return (
     <div className={style.containerCreateVideogame}>
       <Link to="/home">
-        <button className={style.goBackHome}>&#8592; Go Home</button>
+        <button className={style.goBackHome}>&#8592; Ir al inicio</button>
       </Link>
       <form
         onSubmit={(e) => handleSubmit(e)}
         className={style.formCreateVideogame}
       >
-        <h1 className={style.title}>Create VideoGame</h1>
+        <h1 className={style.title}>Agregar VideoGame</h1>
         <div className={style.containerInputsAndSelects}>
           <div className={style.containerOne}>
             {inputs.map((e) => {
@@ -321,7 +325,7 @@ export default function CreateVideogame() {
                     })
                   ) : (
                     <p className={style.selectEmpty}>
-                      Select min 1 Genre & max 5
+                      Seleccione min 1 Genero & max 5
                     </p>
                   )}
                 </ul>
@@ -336,7 +340,7 @@ export default function CreateVideogame() {
                 className={style.selects}
               >
                 <option value="default" disabled>
-                  Platforms
+                  Plataformas
                 </option>
                 {allPlatforms.map((e) => (
                   <option value={e.name}>{e.name}</option>
@@ -363,14 +367,14 @@ export default function CreateVideogame() {
                     ))
                   ) : (
                     <p className={style.selectEmpty}>
-                      Select min 1 Platform & max 5
+                      Seleccione Min 1 Plataforma y Max 5
                     </p>
                   )}
                 </ul>
               </div>
             </div>
             <div className={style.containerPreviousImage}>
-              <h4>Previous Image</h4>
+              <h4>Previsualizar imagen</h4>
               <div className={style.previousImage}>
                 <img
                   id="imgSrc"
@@ -389,7 +393,7 @@ export default function CreateVideogame() {
         </div>
         <div className={style.containerSubmit}>
           {Object.keys(inputsErrors).length || !validator ? (
-            <p className={style.infoCompleteInputs}>Complete All Inputs!</p>
+            <p className={style.infoCompleteInputs}>Por favor complete todos los campos!</p>
           ) : null}
           <button
             type="submit"
@@ -398,7 +402,7 @@ export default function CreateVideogame() {
             }
             className={style.buttonSubmit}
           >
-            Create VideoGame
+            Agregar VideoGame
           </button>
         </div>
       </form>

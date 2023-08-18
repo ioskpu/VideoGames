@@ -46,6 +46,7 @@ export default function Pagination({
 
   func(initialPage);
 
+
   return (
     <div>
       {pageNumbers.length <= 1 ? null : (

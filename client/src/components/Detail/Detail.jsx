@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetailVideogame, resetDetail } from "../../actions";
 import { useEffect } from "react";
 import style from "./Detail.module.css";
-import marioGif from "../../assets/images/mario.gif";
+import bmoGif from "../../assets/images/bmo.gif";
 import defaultImage from "../../assets/images/default-image-detail.png";
 import ErrorNotFound from "../ErrorNotFound/ErrorNotFound";
 const stars = ["⭐", "⭐", "⭐", "⭐", "⭐"];
@@ -18,7 +18,7 @@ export default function Detail(props) {
     return () => {
       dispatch(resetDetail());
     };
-  }, []);
+  }, [dispatch, props.match.params.id]);
 
   const videogame = useSelector((state) => state.detail);
 
@@ -73,7 +73,7 @@ export default function Detail(props) {
         </div>
       ) : (
         <div className={style.loadingDetail}>
-          <img src={marioGif} alt="loading" />
+          <img src={bmoGif} alt="loading" />
           <p>Cargando...</p>
         </div>
       )}

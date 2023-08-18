@@ -8,7 +8,7 @@ import {
 import NavBar from "../NavBar/NavBar";
 import ContainerCards from "../ContainerCards/ContainerCards";
 import Pagination from "../Pagination/Pagination";
-import metalSlug from "../../assets/images/metal-slug.gif";
+import gameOn from "../../assets/images/gaming-game-on.gif";
 import ErrorNotFound from "../ErrorNotFound/ErrorNotFound";
 import style from "./Home.module.css";
 
@@ -51,7 +51,7 @@ export default function Home() {
         <ErrorNotFound />
       ) : allVideogames.length === 0 ? (
         <div className={style.loading}>
-          <img src={metalSlug} alt="img-loading" />
+          <img src={gameOn} alt="img-loading" />
           <div>
             <h3>Cargando...</h3>
           </div>
