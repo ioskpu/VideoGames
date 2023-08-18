@@ -47,8 +47,8 @@ export default function Pagination({
   func(initialPage);
 
 
-  return (
-    <div>
+  return (  
+    <div className={style.container}>
       {pageNumbers.length <= 1 ? null : (
         <nav className={style.pagination}>
           <ul>
@@ -57,7 +57,7 @@ export default function Pagination({
                 onClick={() => paginated("prev")}
                 className={currentPage === 1 ? style.disconnect : ""}
               >
-                &#9650;
+                {/* &#9665;	 */}
               </li>
             ) : null}
             {pageNumbers &&
@@ -76,7 +76,7 @@ export default function Pagination({
                 onClick={() => paginated("next")}
                 className={currentPage === lastPage ? style.disconnect : ""}
               >
-                &#9660;
+                           {/* &#9655; */}
               </li>
             ) : null}
           </ul>
