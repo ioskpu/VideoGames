@@ -31,7 +31,7 @@ export default function NavBar({ handleRefresh, handleSetCurrentPage }) {
             </a>
           </div>
           <div className={style.devLinkedin}>
-            <a href="https://www.linkedin.com/in/luis-corales-1566b867//" target="blank">
+            <a href="https://www.linkedin.com/in/lrcorales/" target="blank">
               <img src={linkedinIcon} alt="linkedinIcon" />
             </a>
           </div>

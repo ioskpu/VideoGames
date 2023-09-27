@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getVideogamesByName, resetVideogames } from "../../actions";
-import style from "./SearchBar.module.css";
+import style from "./searchBar.module.css";
 
 export default function SearchBar({ handleSetCurrentPage }) {
   const dispatch = useDispatch();

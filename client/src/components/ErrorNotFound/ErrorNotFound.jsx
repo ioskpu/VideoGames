@@ -20,9 +20,9 @@ const ErrorNotFound = () => {
         </button>
       </Link>
       <h2 className={style.messageError}>
-        ⚠️Sorry, This Content Was Not Found⚠️
+        Sorry, This Content Was Not Found
       </h2>
-      <h3 className={style.emojiError}>😕</h3>
+      <h3 className={style.emojiError}>:(</h3>
       <img
         src={errorNotFound}
         alt="img-errorNotFound"
