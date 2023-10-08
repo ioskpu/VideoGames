@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "engines": {
-    "node": "16.20.2"
+    "NIXPACKS_NODE_VERSION": "16.20.2"
   },
   "scripts": {
     "start": "react-scripts start",
