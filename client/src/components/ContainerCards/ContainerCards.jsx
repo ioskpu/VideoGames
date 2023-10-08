@@ -30,7 +30,7 @@ export default function ContainerCards({ currentVideogames, allVideogames }) {
       <div className={style.cards}>
         {currentVideogames?.map((el) => {
           return (
-            <fragment>
+            <fragment key={el.id}>
               <Link to={`/home/${el.id}`} className={style.linkCard}>
                 <Card
                   name={el.name}

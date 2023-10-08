@@ -20,7 +20,7 @@ import {
 // dotenv.config();
 
 const BASE_URL = process.env.REACT_APP_API;
-const LOCALHOST = "http://localhost:3001";
+const LOCALHOST = "http://localhost:5000";
 
 export const getVideogames = () => (dispatch) => {
   fetch(`${BASE_URL || LOCALHOST}/videogames`)
