@@ -10,6 +10,6 @@ conn.sync({ force: false }).then(async () => {
   await loadGenres(true);
   await loadPlatforms(true);
   server.listen(process.env.PORT, () => {
-    console.log(`%s listening at ${process.env.PORT}`); // eslint-disable-line no-console
+    console.log(`API server listening at ${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
