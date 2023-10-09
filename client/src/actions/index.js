@@ -49,6 +49,7 @@ const BASE_URL = process.env.REACT_APP_API;
 export const getVideogames = () => async (dispatch) => {
   try {
     const response = await axios.get(`${BASE_URL}/videogames`);
+    //const response = await axios.get('https://videogames-production-63c5.up.railway.app/videogames');
     const data = response.data;
     dispatch({
       type: GET_VIDEOGAMES,
@@ -59,51 +60,91 @@ export const getVideogames = () => async (dispatch) => {
   }
 };
 
-export const getGenres = () => (dispatch) => {
-  fetch(`${BASE_URL}/genres`)
-    .then((response) => response.json())
-    .then((data) =>
-      dispatch({
-        type: GET_GENRES,
-        payload: data,
-      })
-    );
+// export const getGenres = () => (dispatch) => {
+//   fetch(`${BASE_URL}/genres`)
+//     .then((response) => response.json())
+//     .then((data) =>
+//       dispatch({
+//         type: GET_GENRES,
+//         payload: data,
+//       })
+//     );
+// };
+export const getGenres = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/genres`);
+    const data = response.data;
+    dispatch({
+      type: GET_GENRES,
+      payload: data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export const getPlatforms = () => (dispatch) => {
-  fetch(`${BASE_URL}/platforms`)
-    .then((response) => response.json())
-    .then((data) =>
-      dispatch({
-        type: GET_PLATFORMS,
-        payload: data,
-      })
-    );
+// export const getPlatforms = () => (dispatch) => {
+//   fetch(`${BASE_URL}/platforms`)
+//     .then((response) => response.json())
+//     .then((data) =>
+//       dispatch({
+//         type: GET_PLATFORMS,
+//         payload: data,
+//       })
+//     );
+// };
+export const getPlatforms = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/platforms`);
+    const data = response.data;
+    dispatch({
+      type: GET_PLATFORMS,
+      payload: data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export const getVideogamesByName = (name) => (dispatch) => {
-  fetch(`${BASE_URL }/videogames?name=${name}`)
-    .then((response) => response.json())
-    .then((data) =>
-      dispatch({
-        type: GET_VIDEOGAMES_BY_NAME,
-        payload: data,
-      })
-    );
+// export const getVideogamesByName = (name) => (dispatch) => {
+//   fetch(`${BASE_URL }/videogames?name=${name}`)
+//     .then((response) => response.json())
+//     .then((data) =>
+//       dispatch({
+//         type: GET_VIDEOGAMES_BY_NAME,
+//         payload: data,
+//       })
+//     );
+// };
+export const getVideogamesByName = (name) => async (dispatch) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/videogames?name=${name}`);
+    const data = response.data;
+    dispatch({
+      type: GET_VIDEOGAMES_BY_NAME,
+      payload: data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
+// export const getDetailVideogame = (id) => async(dispatch) => {
+//   try {    
+//     const response = await fetch(`${BASE_URL}/videogames/${id}`);
+//     const data = await response.json();
+//     dispatch({
+//       type: GET_DETAIL_VIDEOGAME,
+//       payload: data,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 export const getDetailVideogame = (id) => async(dispatch) => {
   try {
-    // fetch(`${BASE_URL}/videogames/${id}`)
-    //   .then((response) => response.json())
-    //   .then((data) =>
-    //     dispatch({
-    //       type: GET_DETAIL_VIDEOGAME,
-    //       payload: data,
-    //     })
-    //   );
-    const response = await fetch(`${BASE_URL}/videogames/${id}`);
-    const data = await response.json();
+    const response = await axios.get(`${BASE_URL}/videogames/${id}`);
+    const data = response.data;
     dispatch({
       type: GET_DETAIL_VIDEOGAME,
       payload: data,
@@ -123,18 +164,30 @@ export const getDetailVideogame = (id) => async(dispatch) => {
 //   });
 // };
 
+// export const postVideogame = async (payload) => {
+//   try {
+//     const response = await fetch(`${BASE_URL}/videogames`, {
+//       method: "POST",
+//       body: JSON.stringify(payload),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     if (!response.ok) {
+//       throw new Error("Failed to post videogame");
+//     }
+//     // Do something with the response if needed
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 export const postVideogame = async (payload) => {
   try {
-    const response = await fetch(`${BASE_URL}/videogames`, {
-      method: "POST",
-      body: JSON.stringify(payload),
+    const response = await axios.post(`${BASE_URL}/videogames`, payload, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    if (!response.ok) {
-      throw new Error("Failed to post videogame");
-    }
     // Do something with the response if needed
   } catch (error) {
     console.error(error);
