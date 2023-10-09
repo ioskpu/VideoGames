@@ -2,6 +2,10 @@
 
 # **VIDEOGAMES** | Proyecto Individual
 
+## ** YA ESTA EN PRODUCCION PARA HACER PRUEBAS.. PUEDES UBICARLA EN **
+
+## ** [**GameOver**](https://videogames-ioskpu.up.railway.app/) **
+
 ## **📌 OBJETIVOS**
 
 -  Construir una Single Page Application utlizando las tecnologías: **React**, **Redux**, **Node**, **Express** y **Sequelize**.
@@ -15,15 +19,6 @@
 
 ---
 
-## **⏱ HORARIOS Y FECHAS**
-
-El proyecto individual tiene una duración máxima de tres semanas. Se inicia la primera semana con un Kick-Off, y se agendará una corrección personalizada la última semana.
-
-En el caso de completar todas las tareas antes de dicho lapso se podrá avisar a su instructor para coordinar una fecha de presentación del trabajo (DEMO).
-
-<br />
-
----
 
 ## **⚠️ IMPORTANTE**
 
