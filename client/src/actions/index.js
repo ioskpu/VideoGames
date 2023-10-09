@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 import {
   GET_VIDEOGAMES,
   GET_GENRES,
@@ -16,25 +16,51 @@ import {
   FROM_BY_NAME_TO_ALLVIDEOGAMES,
 } from "../types";
 
-// import dotenv from "dotenv";
-// dotenv.config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const BASE_URL = process.env.REACT_APP_API;
-const LOCALHOST = "http://localhost:5000";
 
-export const getVideogames = () => (dispatch) => {
-  fetch(`${BASE_URL || LOCALHOST}/videogames`)
-    .then((response) => response.json())
-    .then((data) =>
-      dispatch({
-        type: GET_VIDEOGAMES,
-        payload: data,
-      })
-    );
+//const LOCALHOST = "http://localhost:5000";
+
+// export const getVideogames = () => (dispatch) => {
+//   fetch(`${BASE_URL}/videogames`)
+//     .then((response) => response.json())
+//     .then((data) =>
+//       dispatch({
+//         type: GET_VIDEOGAMES,
+//         payload: data,
+//       })
+//     );
+// };
+// export const getVideogames = () => async (dispatch) => {
+//   try {
+//     const response = await fetch(`${BASE_URL}/videogames`);
+//     const data = await response.json();
+//     dispatch({
+//       type: GET_VIDEOGAMES,
+//       payload: data,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+export const getVideogames = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/videogames`);
+    const data = response.data;
+    dispatch({
+      type: GET_VIDEOGAMES,
+      payload: data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const getGenres = () => (dispatch) => {
-  fetch(`${BASE_URL || LOCALHOST}/genres`)
+  fetch(`${BASE_URL}/genres`)
     .then((response) => response.json())
     .then((data) =>
       dispatch({
@@ -45,7 +71,7 @@ export const getGenres = () => (dispatch) => {
 };
 
 export const getPlatforms = () => (dispatch) => {
-  fetch(`${BASE_URL || LOCALHOST}/platforms`)
+  fetch(`${BASE_URL}/platforms`)
     .then((response) => response.json())
     .then((data) =>
       dispatch({
@@ -56,7 +82,7 @@ export const getPlatforms = () => (dispatch) => {
 };
 
 export const getVideogamesByName = (name) => (dispatch) => {
-  fetch(`${BASE_URL || LOCALHOST}/videogames?name=${name}`)
+  fetch(`${BASE_URL }/videogames?name=${name}`)
     .then((response) => response.json())
     .then((data) =>
       dispatch({
@@ -66,29 +92,53 @@ export const getVideogamesByName = (name) => (dispatch) => {
     );
 };
 
-export const getDetailVideogame = (id) => (dispatch) => {
+export const getDetailVideogame = (id) => async(dispatch) => {
   try {
-    fetch(`${BASE_URL || LOCALHOST}/videogames/${id}`)
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch({
-          type: GET_DETAIL_VIDEOGAME,
-          payload: data,
-        })
-      );
+    // fetch(`${BASE_URL}/videogames/${id}`)
+    //   .then((response) => response.json())
+    //   .then((data) =>
+    //     dispatch({
+    //       type: GET_DETAIL_VIDEOGAME,
+    //       payload: data,
+    //     })
+    //   );
+    const response = await fetch(`${BASE_URL}/videogames/${id}`);
+    const data = await response.json();
+    dispatch({
+      type: GET_DETAIL_VIDEOGAME,
+      payload: data,
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
-export const postVideogame = (payload) => (dispatch) => {
-  fetch(`${BASE_URL || LOCALHOST}/videogames`, {
-    method: "POST",
-    body: JSON.stringify(payload),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+// export const postVideogame = (payload) => (dispatch) => {
+//   fetch(`${BASE_URL}/videogames`, {
+//     method: "POST",
+//     body: JSON.stringify(payload),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+// };
+
+export const postVideogame = async (payload) => {
+  try {
+    const response = await fetch(`${BASE_URL}/videogames`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to post videogame");
+    }
+    // Do something with the response if needed
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const filterByGenre = (payload) => ({ type: FILTER_BY_GENRE, payload });
