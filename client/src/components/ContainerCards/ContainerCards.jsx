@@ -37,9 +37,9 @@ export default function ContainerCards({ currentVideogames, allVideogames }) {
                   image={el.image}
                   rating={el.rating}
                   key={el.id}
-                  genres={el.genres.map((el) => {
-                    if (typeof el === "string") return ` ${el}`;
-                    else return ` ${el.name}`;
+                  genres={el.genres && el.genres.map((genres) => {
+                    if (typeof genres === "string") return ` ${genres}`;
+                    else return ` ${genres.name}`;
                   })}
                 />
               </Link>
